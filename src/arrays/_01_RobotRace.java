@@ -13,62 +13,52 @@ public static void main(String[] args) {
 	
 
 	//2. create an array of 5 robots.
-Robot[] robots = new Robot[5];
+Robot[] robots = new Robot[2];
 	//3. use a for loop to initialize the robots.
 for (int i = 0; i < robots.length; i++) {
 	robots[i] = new Robot();
 }
 		//4. make each robot start at the bottom of the screen, side by side, facing up
-robots[0].setX(250);
-robots[0].setY(550);
-robots[0].setSpeed(10);
+robots[0].setSpeed(100);
+robots[0].setY(350);
+robots[0].setX(550);
+robots[0].turn(90);
+robots[0].penDown();
+robots[0].move(200);
+robots[0].penUp();
+robots[0].turn(-90);
 
-robots[1].setX(350);
-robots[1].setY(550);
-robots[1].setSpeed(10);
-
-robots[2].setX(450);
-robots[2].setY(550);
-robots[2].setSpeed(10);
-
-robots[3].setX(550);
-robots[3].setY(550);
-robots[3].setSpeed(10);
-
-robots[4].setX(650);
-robots[4].setY(550);
-robots[4].setSpeed(10);
+int space = 50;
+for (int i = 0; i < robots.length; i++) {
+	robots[i].setX(space);
+	robots[i].setY(350);
+	robots[i].setSpeed(10);
+	space += 100;
+}
 	//5. use another for loop to iterate through the array and make each robot move 
 	//   a random amount less than 50.
 Random rand = new Random();
-while (robots[0].getY() > 0 && robots[1].getY() > 0 && robots[2].getY() > 0 && robots[3].getY() > 0 && robots[4].getY() > 0) {
+while (robots[0].getX() < 622 && robots[1].getX() < 722) {
 	for (int i = 0; i < robots.length; i++) {
-	robots[i].move(rand.nextInt(50));
+	for (int j = 0; j < rand.nextInt(10); j++) {
+		
+	
+		robots[i].move(5);
+		robots[i].turn(1);
+		
+	}
+	
 	}
 }
 	//6. use a while loop to repeat step 5 until a robot has reached the top of the screen.
 
 	//7. declare that robot the winner and throw it a party!
-if(robots[0].getY()<0) {
+if(robots[0].getX() >= 622) {
 	JOptionPane.showMessageDialog(null, "Bot 1 is the winner");
 }
-
-else if(robots[1].getY()<0) {
+if(robots[1].getX() >= 722) {
 	JOptionPane.showMessageDialog(null, "Bot 2 is the winner");
 }
-
-else if(robots[2].getY()<0) {
-	JOptionPane.showMessageDialog(null, "Bot 3 is the winner");
-}
-
-else if(robots[3].getY()<0) {
-	JOptionPane.showMessageDialog(null, "Bot 4 is the winner");
-}
-
-else if(robots[4].getY()<0) {
-	JOptionPane.showMessageDialog(null, "Bot 5 is the winner");
-}
-
 
 	//8. try different races with different amounts of robots.
 
